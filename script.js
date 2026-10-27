@@ -12,17 +12,13 @@ const closeModal = () => {
   downloadButton.focus();
 };
 
-// Download the actual installer
+// Download NOVA Client from GitHub Releases
 downloadButton.addEventListener("click", () => {
-  const link = document.createElement("a");
-  link.href = "/downloads/NOVA-Client-Setup.exe";
-  link.download = "NOVA-Client-Setup.exe";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
+  window.location.href =
+    "https://github.com/Ddoxed/Nova/releases/download/V2.4.0/NovaInstaller64x.exe";
 });
 
-// Close the old modal if needed
+// Close the existing modal
 document.getElementById("modal-close").addEventListener("click", closeModal);
 document.getElementById("modal-ok").addEventListener("click", closeModal);
 
@@ -34,8 +30,10 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !modal.hidden) closeModal();
 });
 
+// Update the copyright year
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// Mobile navigation
 document.getElementById("menu-button").addEventListener("click", () => {
   document.querySelector(".nav nav").classList.toggle("open");
 });
@@ -45,4 +43,3 @@ document.querySelectorAll(".nav nav a").forEach((link) => {
     document.querySelector(".nav nav").classList.remove("open");
   });
 });
-
